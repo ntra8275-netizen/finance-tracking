@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  
+  --primary: #4f46e5;
+  --primary-fg: #ffffff;
+  
+  --accent: #0ea5e9;
+  
+  --expense: #f43f5e;
+  --expense-bg: #ffe4e6;
+  
+  --income: #10b981;
+  --income-bg: #d1fae5;
+
+  --surface: #ffffff;
+  --surface-border: #e2e8f0;
+  
+  --muted: #64748b;
+  --muted-bg: #f1f5f9;
+  
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #09090b;
+    --foreground: #fafafa;
+    
+    --primary: #6366f1;
+    --primary-fg: #ffffff;
+    
+    --expense: #fb7185;
+    --expense-bg: rgba(244, 63, 94, 0.15);
+    
+    --income: #34d399;
+    --income-bg: rgba(16, 185, 129, 0.15);
+    
+    --surface: #18181b;
+    --surface-border: #27272a;
+    
+    --muted: #a1a1aa;
+    --muted-bg: #27272a;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-accent: var(--accent);
+  --color-expense: var(--expense);
+  --color-expense-bg: var(--expense-bg);
+  --color-income: var(--income);
+  --color-income-bg: var(--income-bg);
+  --color-surface: var(--surface);
+  --color-surface-border: var(--surface-border);
+  --color-muted: var(--muted);
+  --color-muted-bg: var(--muted-bg);
+  
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Base transitions for smooth UX */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Loading bar animation */
+@keyframes loading-bar {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+.animate-loading-bar {
+  animation: loading-bar 1.8s ease-in-out infinite;
+}
+
+/* Screen fade-in */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Screen slide up for bottom nav pages */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.25s ease-out forwards;
+}
+
+/* Toast slide down */
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-12px) translateX(-50%); }
+  to { opacity: 1; transform: translateY(0) translateX(-50%); }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out forwards;
+}
