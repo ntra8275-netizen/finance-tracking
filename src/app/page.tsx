@@ -108,24 +108,24 @@ function DailyScreen({ expenses, onDelete }: { expenses: Expense[]; onDelete: (i
   const todayTotal = todayExpenses.reduce((s, e) => s + e.amount, 0);
 
   return (
-    <div className="animate-slide-up w-full max-w-md mx-auto px-4 pt-4 pb-4 flex flex-col gap-4">
-      <div className="bg-surface p-5 rounded-xl shadow-sm border border-surface-border">
+    <div className="animate-slide-up w-full max-w-md mx-auto px-6 flex flex-col gap-6">
+      <div className="bg-surface-low p-6 rounded-3xl ambient-shadow">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-muted">Chi tiêu hôm nay</p>
-            <p className="text-2xl font-bold text-foreground mt-1">{todayTotal.toLocaleString("vi-VN")}₫</p>
+            <p className="font-headline text-[10px] font-extrabold uppercase tracking-[0.3em] text-surface-variant mb-2">Today's Ledger</p>
+            <p className="font-headline text-3xl font-extrabold text-primary amount-glow">${todayTotal.toLocaleString("vi-VN")}</p>
           </div>
-          <div className="w-12 h-12 bg-expense-bg rounded-xl flex items-center justify-center">
-            <span className="text-2xl">💸</span>
+          <div className="w-14 h-14 bg-surface-lowest rounded-2xl flex items-center justify-center text-2xl">
+            💸
           </div>
         </div>
-        <p className="text-xs text-muted mt-2">{todayExpenses.length} khoản chi</p>
+        <p className="text-[10px] font-bold text-surface-variant uppercase tracking-widest mt-4 opacity-60">{todayExpenses.length} TRANSACTIONS</p>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4">
         {todayExpenses.length === 0 ? (
-          <div className="bg-surface p-8 rounded-xl border border-surface-border text-center">
-            <span className="text-4xl mb-3 block">📝</span>
-            <p className="text-sm text-muted">Chưa có chi tiêu nào hôm nay.</p>
+          <div className="bg-surface-low p-10 rounded-3xl text-center">
+            <span className="text-4xl mb-4 block opacity-40">📝</span>
+            <p className="text-[10px] font-bold text-surface-variant uppercase tracking-widest">No entries recorded yet.</p>
           </div>
         ) : (
           todayExpenses.map((exp) => <ExpenseCard key={exp.id} expense={exp} onDelete={onDelete} />)
@@ -155,58 +155,59 @@ function AnalyticsScreen({ expenses }: { expenses: Expense[] }) {
   };
 
   return (
-    <div className="animate-slide-up w-full max-w-md mx-auto px-4 pt-4 pb-4 flex flex-col gap-4">
+    <div className="animate-slide-up w-full max-w-md mx-auto px-6 flex flex-col gap-6">
       {/* Month nav */}
-      <div className="flex items-center justify-between bg-surface p-4 rounded-xl border border-surface-border">
-        <button onClick={() => navigateMonth(-1)} className="w-8 h-8 flex items-center justify-center rounded-lg bg-muted-bg text-muted hover:text-foreground transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+      <div className="flex items-center justify-between bg-surface-low p-4 rounded-2xl">
+        <button onClick={() => navigateMonth(-1)} className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-lowest text-primary hover:bg-primary/10 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
         </button>
-        <h2 className="text-lg font-bold text-foreground">{summary.monthLabel}</h2>
-        <button onClick={() => navigateMonth(1)} className="w-8 h-8 flex items-center justify-center rounded-lg bg-muted-bg text-muted hover:text-foreground transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+        <h2 className="font-headline text-xs font-extrabold uppercase tracking-[0.3em] text-primary">{summary.monthLabel}</h2>
+        <button onClick={() => navigateMonth(1)} className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-lowest text-primary hover:bg-primary/10 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
         </button>
       </div>
 
       {/* Summary stats */}
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-surface p-3 rounded-xl border border-surface-border text-center">
-          <p className="text-[10px] text-muted uppercase tracking-wide">Tổng</p>
-          <p className="text-sm font-bold text-expense mt-1">
-            {summary.totalAmount >= 1_000_000 ? `${(summary.totalAmount / 1_000_000).toFixed(1)}M` : `${(summary.totalAmount / 1_000).toFixed(0)}K`}
+      <div className="grid grid-cols-3 gap-4">
+        <div className="bg-surface-low p-4 rounded-2xl text-center">
+          <p className="text-[8px] font-bold text-surface-variant uppercase tracking-widest mb-1.5">Total</p>
+          <p className="font-headline text-sm font-extrabold text-primary">
+            ${summary.totalAmount >= 1_000_000 ? `${(summary.totalAmount / 1_000_000).toFixed(1)}M` : `${(summary.totalAmount / 1_000).toFixed(0)}K`}
           </p>
         </div>
-        <div className="bg-surface p-3 rounded-xl border border-surface-border text-center">
-          <p className="text-[10px] text-muted uppercase tracking-wide">TB/Ngày</p>
-          <p className="text-sm font-bold text-foreground mt-1">
-            {summary.avgDaily >= 1_000_000 ? `${(summary.avgDaily / 1_000_000).toFixed(1)}M` : `${(summary.avgDaily / 1_000).toFixed(0)}K`}
+        <div className="bg-surface-low p-4 rounded-2xl text-center">
+          <p className="text-[8px] font-bold text-surface-variant uppercase tracking-widest mb-1.5">Daily Avg</p>
+          <p className="font-headline text-sm font-extrabold text-foreground">
+            ${summary.avgDaily >= 1_000_000 ? `${(summary.avgDaily / 1_000_000).toFixed(1)}M` : `${(summary.avgDaily / 1_000).toFixed(0)}K`}
           </p>
         </div>
-        <div className="bg-surface p-3 rounded-xl border border-surface-border text-center">
-          <p className="text-[10px] text-muted uppercase tracking-wide">Số lần</p>
-          <p className="text-sm font-bold text-foreground mt-1">{summary.expenseCount}</p>
+        <div className="bg-surface-low p-4 rounded-2xl text-center">
+          <p className="text-[8px] font-bold text-surface-variant uppercase tracking-widest mb-1.5">Count</p>
+          <p className="font-headline text-sm font-extrabold text-foreground">{summary.expenseCount}</p>
         </div>
-      </div>
-
-      {/* Insights */}
-      <div className="bg-surface p-4 rounded-xl border border-surface-border">
-        <h3 className="text-sm font-semibold text-foreground mb-3">💡 Phân tích thông minh</h3>
-        <InsightCards insights={insights} />
       </div>
 
       {/* Daily chart */}
-      <div className="bg-surface p-4 rounded-xl border border-surface-border">
-        <h3 className="text-sm font-semibold text-foreground mb-3">Chi tiêu theo ngày</h3>
+      <div className="bg-surface-low p-6 rounded-3xl">
+        <h3 className="font-headline text-[10px] font-extrabold uppercase tracking-[0.25em] text-surface-variant mb-6">Daily Flow</h3>
         <DailyChart dailyStats={summary.dailyStats} />
       </div>
 
       {/* Category breakdown */}
-      <div className="bg-surface p-4 rounded-xl border border-surface-border">
-        <h3 className="text-sm font-semibold text-foreground mb-3">Phân bổ danh mục</h3>
+      <div className="bg-surface-low p-6 rounded-3xl">
+        <h3 className="font-headline text-[10px] font-extrabold uppercase tracking-[0.25em] text-surface-variant mb-6">Portfolio Distribution</h3>
         <CategoryBreakdown categories={summary.categories} totalAmount={summary.totalAmount} />
+      </div>
+
+      {/* Insights */}
+      <div className="bg-surface-low p-6 rounded-3xl mb-4">
+        <h3 className="font-headline text-[10px] font-extrabold uppercase tracking-[0.25em] text-surface-variant mb-4">Market Insights</h3>
+        <InsightCards insights={insights} />
       </div>
     </div>
   );
 }
+
 
 /* ─── Home ─── */
 export default function Home() {
@@ -239,9 +240,20 @@ export default function Home() {
   if (isLoading) return <LoadingScreen />;
 
   return (
-    <div className="flex flex-col min-h-screen bg-background animate-fade-in">
+    <div className="flex flex-col min-h-screen bg-background animate-fade-in font-body">
+      <header className="fixed top-0 w-full z-50 glass flex justify-between items-center px-6 h-16 border-b border-outline-variant">
+        <button className="text-primary hover:opacity-80 transition-opacity active:scale-95">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+        <h1 className="font-headline text-[10px] font-extrabold uppercase tracking-[0.4em] text-primary">THE OBSIDIAN LEDGER</h1>
+        <div className="w-8 h-8 rounded-full overflow-hidden border border-primary/20 p-0.5">
+          <div className="w-full h-full rounded-full bg-surface-highest" />
+        </div>
+      </header>
+
       <ToastContainer />
-      <div className="flex-1 flex flex-col items-center justify-start pt-4 pb-24 overflow-y-auto">
+      <div className="flex-1 flex flex-col items-center justify-start pt-20 pb-32 overflow-y-auto w-full">
+
         {activeTab === "capture" && <CaptureScreen expenses={allExpenses} onSaved={refreshData} />}
         {activeTab === "daily" && <DailyScreen expenses={allExpenses} onDelete={handleDelete} />}
         {activeTab === "analytics" && <AnalyticsScreen expenses={allExpenses} />}

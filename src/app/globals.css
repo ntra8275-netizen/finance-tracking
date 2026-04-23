@@ -1,52 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #131313;
+  --foreground: #e5e2e1;
   
-  --primary: #4f46e5;
-  --primary-fg: #ffffff;
+  /* The Golden Shutter */
+  --primary: #ffd700;
+  --primary-fg: #131313;
   
-  --accent: #0ea5e9;
+  /* Tertiary / Data */
+  --accent: #00f1ff;
   
-  --expense: #f43f5e;
-  --expense-bg: #ffe4e6;
+  /* Surfaces */
+  --surface-lowest: #0e0e0e;
+  --surface-low: #1c1b1b;
+  --surface-highest: #353534;
+  --surface-variant: #999077;
   
-  --income: #10b981;
-  --income-bg: #d1fae5;
-
-  --surface: #ffffff;
-  --surface-border: #e2e8f0;
+  /* Border fallbacks (15% opacity) */
+  --outline-variant: rgba(229, 226, 225, 0.15);
   
-  --muted: #64748b;
-  --muted-bg: #f1f5f9;
-  
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #09090b;
-    --foreground: #fafafa;
-    
-    --primary: #6366f1;
-    --primary-fg: #ffffff;
-    
-    --expense: #fb7185;
-    --expense-bg: rgba(244, 63, 94, 0.15);
-    
-    --income: #34d399;
-    --income-bg: rgba(16, 185, 129, 0.15);
-    
-    --surface: #18181b;
-    --surface-border: #27272a;
-    
-    --muted: #a1a1aa;
-    --muted-bg: #27272a;
-  }
+  /* Radii */
+  --radius-xl: 2rem;
+  --radius-2xl: 3rem;
 }
 
 @theme inline {
@@ -55,23 +31,35 @@
   --color-primary: var(--primary);
   --color-primary-fg: var(--primary-fg);
   --color-accent: var(--accent);
-  --color-expense: var(--expense);
-  --color-expense-bg: var(--expense-bg);
-  --color-income: var(--income);
-  --color-income-bg: var(--income-bg);
-  --color-surface: var(--surface);
-  --color-surface-border: var(--surface-border);
-  --color-muted: var(--muted);
-  --color-muted-bg: var(--muted-bg);
   
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
+  --color-surface-lowest: var(--surface-lowest);
+  --color-surface-low: var(--surface-low);
+  --color-surface-highest: var(--surface-highest);
+  --color-surface-variant: var(--surface-variant);
+  
+  --color-outline-variant: var(--outline-variant);
+  
   --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-headline: "Plus Jakarta Sans", var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Manrope", var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
+
+.glass {
+  background: rgba(28, 27, 27, 0.6);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+.amount-glow {
+  text-shadow: 0 0 40px rgba(255, 215, 0, 0.35);
+}
+
+.ambient-shadow {
+  box-shadow: 0 32px 64px -12px rgba(255, 215, 0, 0.08);
+}
+
 
 body {
   background: var(--background);

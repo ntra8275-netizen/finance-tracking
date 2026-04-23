@@ -13,23 +13,22 @@ export default function CategoryGrid({ selected, suggestedId, onSelect, error }:
   const hasError = !!error;
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center justify-between">
-        <label className="text-sm font-medium text-foreground">Danh mục</label>
+    <div className="flex flex-col gap-3">
+      <div className="flex items-center justify-between px-1">
+        <label className="font-headline text-[10px] font-extrabold uppercase tracking-[0.3em] text-surface-variant">
+          Category
+        </label>
         {suggestedId && !selected && (
-          <span className="text-[10px] font-medium text-accent animate-fade-in">
-            ✨ Gợi ý cho bạn
+          <span className="text-[10px] font-bold text-primary animate-fade-in tracking-widest uppercase">
+            ✦ Suggested
           </span>
-        )}
-        {hasError && (
-          <span className="text-xs text-expense animate-fade-in">{error}</span>
         )}
       </div>
 
       <div
         className={`
-          grid grid-cols-5 gap-2 p-3 rounded-xl transition-all duration-200
-          ${hasError ? "ring-2 ring-expense bg-expense-bg/50" : "bg-muted-bg"}
+          grid grid-cols-4 gap-3 p-4 rounded-3xl transition-all duration-300
+          ${hasError ? "bg-red-950/20 ring-1 ring-red-500/30" : "bg-surface-lowest"}
         `}
       >
         {DEFAULT_CATEGORIES.map((cat) => {
@@ -41,26 +40,23 @@ export default function CategoryGrid({ selected, suggestedId, onSelect, error }:
               type="button"
               onClick={() => onSelect(cat)}
               className={`
-                relative flex flex-col items-center gap-1 py-2 px-1 rounded-lg
-                transition-all duration-200 active:scale-95
+                relative flex flex-col items-center gap-2 py-3 px-2 rounded-2xl
+                transition-all duration-300 active:scale-95
                 ${
                   isSelected
-                    ? "bg-surface shadow-md ring-2 ring-primary scale-105"
+                    ? "bg-primary text-primary-fg shadow-xl shadow-primary/20 scale-105"
                     : isSuggested
-                    ? "bg-accent/10 ring-1 ring-accent/40 scale-105"
-                    : "hover:bg-surface/60"
+                    ? "bg-primary/10 ring-1 ring-primary/40"
+                    : "bg-surface-low hover:bg-surface-highest/40"
                 }
               `}
             >
-              {isSuggested && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full flex items-center justify-center">
-                  <span className="text-[6px] text-white font-bold">✦</span>
-                </span>
-              )}
-              <span className="text-2xl">{cat.icon}</span>
+              <span className={`text-2xl transition-transform ${isSelected ? "scale-110" : ""}`}>
+                {cat.icon}
+              </span>
               <span
-                className={`text-[10px] font-medium leading-tight text-center line-clamp-1 ${
-                  isSelected ? "text-primary" : isSuggested ? "text-accent" : "text-muted"
+                className={`text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 ${
+                  isSelected ? "text-primary-fg" : "text-surface-variant"
                 }`}
               >
                 {cat.name}
@@ -69,6 +65,10 @@ export default function CategoryGrid({ selected, suggestedId, onSelect, error }:
           );
         })}
       </div>
+      {hasError && (
+        <p className="text-[10px] text-red-400 px-1 font-medium tracking-wide uppercase">{error}</p>
+      )}
     </div>
+
   );
 }

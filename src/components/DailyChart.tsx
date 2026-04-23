@@ -46,12 +46,13 @@ export default function DailyChart({ dailyStats }: DailyChartProps) {
               {/* Bar */}
               <div
                 className={`
-                  w-full rounded-t-sm transition-all duration-300
-                  ${isToday ? "bg-primary" : day.total > 0 ? "bg-accent/60" : "bg-muted-bg"}
+                  w-full rounded-t-lg transition-all duration-300
+                  ${isToday ? "bg-primary animate-pulse" : day.total > 0 ? "bg-accent/40 group-hover:bg-accent/80" : "bg-surface-highest/20"}
                 `}
                 style={{ height: `${barHeight}%` }}
               />
             </div>
+
           );
         })}
       </div>

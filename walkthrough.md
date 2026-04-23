@@ -1,34 +1,53 @@
-# 🚀 Tổng Kết Dự Án Spendly - Finance Tracker
+# Walkthrough: The Lumi Noir Overhaul (The Obsidian Ledger)
 
-Dự án Spendly - ứng dụng quản lý chi tiêu cá nhân tối giản, tốc độ cao theo hướng PWA đã được xây dựng thành công 100% qua 6 giai đoạn.
+We have successfully transformed **Spendly** from a standard utility app into a premium, luxury digital ledger. The new design system, **Lumi Noir**, emphasizes depth, high-contrast typography, and a "No-Line" structural philosophy.
 
-## 🏗️ Kiến Trúc & Công Nghệ
-- **Framework:** Next.js 15 (App Router)
-- **Styling:** Tailwind CSS v4 + Vanilla CSS Design Tokens (Glassmorphism, Dark/Light Mode, Transitions)
-- **Storage:** LocalStorage Service (Offline-first)
-- **PWA:** Hỗ trợ cài đặt màn hình chính với Next.js PWA
+## 🎨 Visual Identity & Foundations
 
-## 🌟 Các Tính Năng Đã Hoàn Thiện
+### 1. The Obsidian Palette
+We moved away from generic grays to a curated palette of deep obsidians and tonal surfaces.
+- **Surface-Low/Lowest**: Used for background layering instead of borders.
+- **Golden Shutter (Primary)**: Used for high-emphasis actions and totals.
+- **Cyan (Accent)**: Used for secondary interactive elements and analytics.
 
-### 1. Nhập Chi Tiêu Siêu Tốc (Dưới 5 giây)
-- **Amount Input:** Bàn phím số tùy chỉnh (Number pad) siêu nhạy với nút bấm `000` tăng tốc độ nhập liệu. Auto-format VNĐ.
-- **Category Grid:** 10 danh mục mặc định với icon trực quan. **Có tính năng Auto-suggest** thông minh.
-- **Camera Capture:** Tích hợp camera chụp ảnh hóa đơn/sản phẩm trực tiếp không cần mở app ngoài (Lưu ảnh dạng Base64).
-- **Validation Real-time:** Bắt lỗi số tiền, bắt buộc chọn danh mục.
+### 2. Typography Hierarchy
+Replaced default fonts with premium variable fonts:
+- **Plus Jakarta Sans**: Used for bold headlines, numbers, and tracking-heavy labels.
+- **Manrope**: Used for body text to ensure maximum readability.
 
-### 2. Quản Lý & Phân Tích (Analytics Engine)
-- **Daily Feed:** Liệt kê các khoản chi tiêu theo ngày.
-- **Monthly Summary:** Xem tổng quan chi tiêu theo tháng (Tổng chi, Trung bình ngày, Số lần).
-- **Category Breakdown:** Biểu đồ Donut SVG siêu mượt thể hiện phần trăm từng danh mục.
-- **Daily Spending Chart:** Biểu đồ cột hiển thị chi tiêu trong tháng với hover tooltips.
+### 3. Glassmorphism & Depth
+Applied the `.glass` utility for the floating navigation and central action buttons, creating a sense of layered physical materials.
 
-### 3. Smart Features & Polish (Tính năng thông minh)
-- **Smart Suggestions:** Gợi ý danh mục dựa trên tần suất (60%) và độ gần đây (40%) theo khung giờ.
-- **Behavioral Insights:** Cảnh báo chi tiêu (Tăng/giảm so với tháng trước, Cảnh báo danh mục chiếm >50%, Cảnh báo giao dịch lớn).
-- **Inline Delete:** Xóa khoản chi cực kỳ trực quan với nút thùng rác và animation "slide to confirm".
-- **Toast Notifications:** Phản hồi UI slide-down khi có tương tác (Lưu/Xóa).
+---
 
-## 📱 Cách Sử Dụng
-Mở http://localhost:3000 trên điện thoại (hoặc trình duyệt PC thu nhỏ kích thước giả lập mobile). Bạn hoàn toàn có thể lưu URL này ra màn hình chính (Add to Home Screen) trên thiết bị thật.
+## 🛠️ Component Redesign
 
-Cảm ơn bạn đã đồng hành xây dựng dự án này! 🎉
+### Floating Navigation
+The navigation is now a glass bar that floats above the content, featuring a central "Golden Shutter" capture button.
+
+### High-End Inputs
+The amount input now features an **Amount Glow** effect and a glassmorphic keypad, making every entry feel like a high-stakes transaction.
+
+### Cinematic Capture
+The camera interface now looks like a professional viewfinder with corner markers and grayscale-to-color transitions.
+
+---
+
+## 📊 Analytics & Insights
+
+- **Daily Flow Chart**: Updated with a Golden/Cyan dual-tone system. Today's spending now pulses in gold.
+- **Portfolio Distribution**: The donut chart and category bars now use the Lumi Noir tonal stacking for better visual hierarchy.
+- **Market Insights**: Redesigned as editorial cards with bold typography.
+
+---
+
+## 🏁 Final Audit Results
+
+| Area | Status | Notes |
+| :--- | :--- | :--- |
+| **No-Line Rule** | ✅ Pass | All 1px borders removed in favor of tonal shifts. |
+| **Oxygen Spacing** | ✅ Pass | Increased padding to 24px (p-6) for a more airy, premium feel. |
+| **Typography** | ✅ Pass | Correct usage of Headline vs Body fonts across all screens. |
+| **Accessibility** | ✅ Pass | High contrast ratios maintained despite the dark theme. |
+
+The application is now ready for a premium user experience. All core functionality (LocalStorage, Camera, Analytics) remains intact but is now housed in a world-class interface.
