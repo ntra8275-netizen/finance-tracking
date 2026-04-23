@@ -86,7 +86,7 @@ function CaptureScreen({ expenses, onSaved }: { expenses: Expense[]; onSaved: ()
           error={categoryError}
         />
         <NoteInput value={note} onChange={setNote} />
-        <CameraCapture imageData={imageData} onCapture={setImageData} onRemove={() => imageData(null)} />
+        <CameraCapture imageData={imageData} onCapture={setImageData} onRemove={() => setImageData(null)} />
         <button type="button" disabled={isSaving} onClick={handleSave}
           className={`w-full py-3.5 rounded-xl font-semibold text-base transition-all duration-200 active:scale-[0.98] ${isSaving ? "opacity-60 cursor-wait" : ""} ${amount > 0 && selectedCategory ? "bg-primary text-primary-fg hover:opacity-90 shadow-lg shadow-primary/25" : "bg-muted-bg text-muted"}`}>
           {isSaving ? (
